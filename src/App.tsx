@@ -1,25 +1,73 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from "react";
+import "./App.css";
+import { usePostStateSelector } from "./modules/posts/state/selector/Post.selector";
+import { useDispatch } from "react-redux";
+import {
+  getActionFindPostById,
+  getActionResetPost
+} from "./modules/posts/state/PostStateSlice";
 
 function App() {
+  const {
+    userId,
+    id,
+    title,
+    body,
+    errorMessage,
+    fetchStatus
+  } = usePostStateSelector();
+
+  const dispatch = useDispatch();
+  const inputEl = useRef(null);
+
+  const hanleLoadPost = () => {
+    const postId =
+      inputEl && inputEl.current ? (inputEl.current as any).value : 0;
+    dispatch(getActionFindPostById({ postId }));
+  };
+
+  const hanleResetState = () => {
+    dispatch(getActionResetPost());
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="app">
+        <h1>vdr-reduxtoolkit-epic-example</h1>
+        <div className="app-search">
+          <span>
+            PostId
+            <input ref={inputEl} type="number" />
+          </span>
+          <button onClick={hanleLoadPost}>Load Post</button>
+          <button onClick={hanleResetState}>Reset state</button>
+        </div>
+        <div className="app-resultbox">
+          <span>User id</span>
+          <span>{userId}</span>
+        </div>
+        <div className="app-resultbox">
+          <span>Id</span>
+          <span>{id}</span>
+        </div>
+        <div className="app-resultbox">
+          <span>Title</span>
+          <span>{title}</span>
+        </div>
+        <div className="app-resultbox">
+          <span>Body</span>
+          <span>{body}</span>
+        </div>
+        <div className="app-resultbox">
+          <span>Error message</span>
+          <span>{errorMessage}</span>
+        </div>
+        <div className="app-resultbox">
+          <span>fetchStatus</span>
+          <span>{fetchStatus}</span>
+        </div>
+      </div>
+    </>
   );
 }
 
