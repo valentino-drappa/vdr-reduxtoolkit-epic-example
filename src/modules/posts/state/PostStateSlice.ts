@@ -16,22 +16,23 @@ class PostStateSlice extends AbstractStateSlice<PostState> {
 const postSlice = new PostStateSlice(
   [
     //provide a list of AbstractEpicReducer
-    // the library will generate and manage 3 actions  post/read_fetch, post/read_fetchSuccess, post/read_fetchError,
+    // the library will generate and manage three actions  post/read_fetch, post/read_fetchSuccess, post/read_fetchError
     new ReadPostReducer(SLICE_NAME, 'read'),
   ],
   [
     //provide a list of  AbstractSingleReducer
-    new ResetPostReducer('reset'), // the library will generate an action 'reset'
+    // the library will generate an action 'post/reset'
+    new ResetPostReducer('reset'),
   ]
 )
 
-//get the reducer in order to add them to the state
+//get the reducers in order to add them to the state
 export const postReducers = postSlice.slice.reducer
 
-//get the epic in order to add them to the state epic
+//get the epics in order to add them to the state epic
 export const postEpic = postSlice.epic
 
-//action to trigger by the user to load a post
+//action to trigger to load a post
 export const getActionFindPostById = (x: ReadPostFetchPayload) =>
   postSlice.slice.actions.read_fetch(x)
 

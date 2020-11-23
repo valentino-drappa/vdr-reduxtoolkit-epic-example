@@ -44,3 +44,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## About the project
+
+This project show how to use the library [vdr-reduxtoolkit-observable](https://www.npmjs.com/package/vdr-reduxtoolkit-observable)
+This library facilitates the use of redux-observable with redux-toolkit.
+
+### Library information
+
+To knowmore about the library, check out [vdr-reduxtoolkit-observable](https://www.npmjs.com/package/vdr-reduxtoolkit-observable).
