@@ -1,11 +1,12 @@
-import React, { useRef } from "react";
-import "./App.css";
-import { usePostStateSelector } from "./modules/posts/state/selector/Post.selector";
-import { useDispatch } from "react-redux";
+import React, { useRef } from 'react'
+import './App.css'
+import { usePostStateSelector } from './modules/posts/state/selector/Post.selector'
+import { useDispatch } from 'react-redux'
 import {
   getActionFindPostById,
-  getActionResetPost
-} from "./modules/posts/state/PostStateSlice";
+  getActionResetPost,
+} from './modules/posts/state/PostStateSlice'
+import { EFetchStatus } from './core/enum/FetchStatus.enum'
 
 function App() {
   const {
@@ -14,21 +15,23 @@ function App() {
     title,
     body,
     errorMessage,
-    fetchStatus
-  } = usePostStateSelector();
+    fetchStatus,
+  } = usePostStateSelector()
 
-  const dispatch = useDispatch();
-  const inputEl = useRef(null);
+  const dispatch = useDispatch()
+  const inputEl = useRef(null)
 
   const hanleLoadPost = () => {
     const postId =
-      inputEl && inputEl.current ? (inputEl.current as any).value : 0;
-    dispatch(getActionFindPostById({ postId }));
-  };
+      inputEl && inputEl.current ? (inputEl.current as any).value : 0
+    dispatch(getActionFindPostById({ postId }))
+  }
 
   const hanleResetState = () => {
-    dispatch(getActionResetPost());
-  };
+    dispatch(getActionResetPost())
+  }
+
+  const isButtonDisabled = fetchStatus === EFetchStatus.PENDING
 
   return (
     <>
@@ -39,8 +42,12 @@ function App() {
             PostId
             <input ref={inputEl} type="number" />
           </span>
-          <button onClick={hanleLoadPost}>Load Post</button>
-          <button onClick={hanleResetState}>Reset state</button>
+          <button onClick={hanleLoadPost} disabled={isButtonDisabled}>
+            Load Post
+          </button>
+          <button onClick={hanleResetState} disabled={isButtonDisabled}>
+            Reset state
+          </button>
         </div>
         <div className="app-resultbox">
           <span>User id</span>
@@ -68,7 +75,7 @@ function App() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
