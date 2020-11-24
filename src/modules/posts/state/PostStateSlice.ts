@@ -37,4 +37,5 @@ export const getActionFindPostById = (x: ReadPostFetchPayload) =>
   postSlice.slice.actions.read_fetch(x)
 
 //action to trigger to reset the state
-export const getActionResetPost = () => postSlice.slice.actions.reset(null)
+export const getActionResetPost = () =>
+  postSlice.slice.actions.reset('qsdqdsqdsqdsqdsqdsqd')

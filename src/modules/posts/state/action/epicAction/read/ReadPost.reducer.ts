@@ -17,10 +17,10 @@ export class ReadPostReducer extends AbstractEpicReducer<
   ReadPostFetchSuccessPayload
 > {
   // Schema step 5 - make the api call
-  fetchApiCall = (data: ReadPostFetchPayload) => findPostById(data.postId)
+  fetchApiCall = (payload: ReadPostFetchPayload) => findPostById(payload.postId)
 
   // Schema step 3 - reducer for the post/read_fetch action
-  fetch = (state: PostState, data: ReadPostFetchPayload) => ({
+  fetch = (state: PostState, payload: ReadPostFetchPayload) => ({
     ...POST_STATE_INTITIAL_STATE,
     fetchStatus: EFetchStatus.PENDING,
   })
@@ -28,19 +28,19 @@ export class ReadPostReducer extends AbstractEpicReducer<
   // Schema step 8 - reducer for the post/read_fetchSuccess action
   fetchSuccess = (
     state: PostState,
-    data: ReadPostFetchSuccessPayload
+    payload: ReadPostFetchSuccessPayload
   ): PostState => ({
-    ...data,
+    ...payload,
     errorMessage: '',
     fetchStatus: EFetchStatus.SUCCESS,
   })
 
   // Schema step 8 - reducer for the post/read_fetchError action
   // /!\ FetchErrorPayload is provided by the library
-  fetchError = (state: PostState, data: FetchErrorPayload) => {
+  fetchError = (state: PostState, payload: FetchErrorPayload) => {
     return {
       ...POST_STATE_INTITIAL_STATE,
-      errorMessage: data.errorMsg,
+      errorMessage: payload.errorMsg,
       fetchStatus: EFetchStatus.ERROR,
     }
   }

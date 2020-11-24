@@ -11023,10 +11023,10 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vdr-reduxtoolkit-observable@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/vdr-reduxtoolkit-observable/-/vdr-reduxtoolkit-observable-1.1.0.tgz#fd37750c3c28ad8a20bd602fdb462381918657f9"
-  integrity sha512-IdMgxLXAvx6VjB2rcTHzvv7hXq+OdV3I+34KEE9nhmrVcIoP3LcSu4pmTfhz7Tz3TsF26KTneshJEWWLrwKCRg==
+vdr-reduxtoolkit-observable@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vdr-reduxtoolkit-observable/-/vdr-reduxtoolkit-observable-1.2.0.tgz#3cafcd79360dc97882da0b5337ff0306d46e73b7"
+  integrity sha512-ITSr62zbQ63Jgny29dlo8A0Lfwi3C7QnXY6rKPl5EtL7z7pr2y8LmfZV4HPtss1H/+oYO2KfcPYgIriVQAuIkw==
   dependencies:
     "@reduxjs/toolkit" "^1.4.0"
     axios "^0.21.0"
